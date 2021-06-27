@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    hostname: db
+    image: postgres
+    restart: always
+    ports:
+    - 5432:5432
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOSTNAME=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DRIVER=postgresql
+  app:
+    tty: true
+    command: sh -c "python manage.py migrate && python manage.py createsuperuser2 --username admin --password 1234 --noinput --email 'blank@email.com' && python manage.py runserver 0.0.0.0:8000"
+    build:
+      context: .
+    depends_on:
+      - db
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    environment:
+      - DJANGO_SU_NAME=admin
+      - DJANGO_SU_EMAIL=example@mail.com
+      - DJANGO_SU_PASSWORD=1234
