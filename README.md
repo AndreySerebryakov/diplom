@@ -5,3 +5,5 @@
 Если Вы используете https, то: git clone https://github.com/AndreySerebryakov/diplom.git
 
 Перейти в директорию diplom/shop/shop Прописать команду docker-compose up --build
+
+Для остановки контейнера используйте docker stop $(docker ps -a -q) и для удаления docker rm $(docker ps -a -q)
