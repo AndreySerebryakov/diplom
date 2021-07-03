@@ -65,7 +65,7 @@ class CategoryDetailView(CartMixin, CategoryDetailMixin, DetailView):
 
 class AddToCartView(CartMixin, View):
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         ct_model, product_slug = kwargs.get('ct_model'), kwargs.get('slug')
         content_type = ContentType.objects.get(model=ct_model)
         product = content_type.model_class().objects.get(slug=product_slug)
