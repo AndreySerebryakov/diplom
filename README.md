@@ -6,7 +6,8 @@
 
 Перейти в директорию diplom/shop/shop Прописать команду docker-compose up --build
 
-Для остановки контейнера используйте docker stop $(docker ps -a -q) и для удаления docker rm $(docker ps -a -q)
+Для остановки контейнера используйте docker stop $(docker ps -a -q)
+для удаления docker rm $(docker ps -a -q)
 
 Админка:
 
